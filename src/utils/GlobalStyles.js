@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { primaryBlack, secondaryBlack, lightGray } from './colors';
+import { primaryBlack, lightGray } from './colors';
 
 export const GlobalStyles = createGlobalStyle`
 *{
@@ -26,12 +26,11 @@ li{
 }
 
 .app{
-  height: 100vh;
-  width: 100vw;
-  background: linear-gradient(0deg, ${secondaryBlack} 50%, ${primaryBlack} 50%);
+  min-height: 100vh;
+  width: 100%;
+  background: ${primaryBlack};
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
 }
 `;
