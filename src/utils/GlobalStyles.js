@@ -15,6 +15,11 @@ body{
 
 a{
   text-decoration: none;
+  color: inherit;
+}
+
+a:visited{
+  color: inherit;
 }
 
 button , input{
