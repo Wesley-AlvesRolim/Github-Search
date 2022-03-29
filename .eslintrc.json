@@ -19,6 +19,7 @@
   ],
   "rules": {
     "jsx-a11y/label-has-associated-control": 0,
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "react/react-in-jsx-scope": 0
   }
 }
