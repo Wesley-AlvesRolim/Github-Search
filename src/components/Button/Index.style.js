@@ -3,7 +3,7 @@ import { lightGreen } from '../../utils/colors';
 
 const Button = styled.button`
     height: 3rem;
-    width: 5rem;
+    width: ${(props) => (props.modifyWidth ? '10.5rem' : '5rem')};
     border-radius: 5px;
     background-color: transparent;
     color: #ddd;
@@ -12,6 +12,7 @@ const Button = styled.button`
     overflow: hidden;
     transform: translateY(-2px);
     transition: 0.5s;
+    cursor: pointer;
 
     &:hover{
       color: #fff;
@@ -22,7 +23,7 @@ const Button = styled.button`
       &::after{
         opacity: 1;
         transform-origin: 0 2.5rem;
-        transform: scale(1) translate(-8px,-1.5rem);
+        transform: ${(props) => (props.modifyWidth ? 'scale(1) translate(-8px, -3.5rem)' : 'scale(1) translate(-8px,-1.5rem)')};
       }
     }
 
@@ -43,8 +44,8 @@ const Button = styled.button`
     position: absolute;
     top: 0;
     left: 0;
-    width: 100px;
-    height: 100px;
+    width: ${(props) => (props.modifyWidth ? '190px' : '100px')};
+    height: ${(props) => (props.modifyWidth ? '150px' : '100px')};
     background-color:  ${lightGreen};
     border-radius: 50%;
     transform: translate(-15px, -1.75rem) scale(0.1);
