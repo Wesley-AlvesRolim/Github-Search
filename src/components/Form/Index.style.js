@@ -1,28 +1,72 @@
 import styled from 'styled-components';
+import { FaArrowCircleLeft } from 'react-icons/fa';
+
 import { darkGray, primaryBlack } from '../../utils/colors';
-import { ButtonComponent } from '../Button/Index';
 
 const Overlay = styled.div`
-display: ${(props) => (props.isActive ? 'block' : 'none')};
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000bf;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: ${(props) => (props.overlayIsActive ? 'flex' : 'none')};
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  & > div {
+    width: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 720px) {
+    & > div {
+      width: 95vh;
+    }
+  }
+`;
+
+const FaArrowCircleLeftStyled = styled(FaArrowCircleLeft)`
+  position: absolute;
+  top: 20px;
+  left: 2px;
+  cursor: pointer;
+
+  @media (max-width: 720px) {
+    top: calc(25vh - 120px);
+    left: 5vw;
+  }
 `;
 
 const Container = styled.div`
-width: 25rem;
-height: 175px;
-margin: 20vh 0 5rem;
-background-color: ${darkGray};
-display: flex;
-align-items: center;
-justify-content: center;
-box-shadow: 0 1px 1px ${primaryBlack};
-transition: 0.5s;
+  width: 25rem;
+  height: 175px;
+  margin: 20vh 0 5rem;
+  background-color: ${darkGray};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 1px ${primaryBlack};
+  transition: 0.5s;
 
-&:hover{
-  box-shadow: 0 1px 10px ${primaryBlack};
-  transform: translateY(-2px);
-}
+  &:hover {
+    box-shadow: 0 1px 10px ${primaryBlack};
+    transform: translateY(-2px);
+  }
 
-form{
+  @media (max-width: 720px) {
+    height: 15rem;
+    width: 95vw;
+    padding: 5px;
+  }
+`;
+
+const Form = styled.form`
   display: grid;
   justify-items: center;
 
@@ -75,11 +119,6 @@ form{
   }
 `;
 
-const Button = styled(ButtonComponent)`
-
-@media (max-width: 720px){
-
-}
-`;
-
-export { Overlay, Container, Button };
+export {
+  Overlay, Container, FaArrowCircleLeftStyled,
+};
