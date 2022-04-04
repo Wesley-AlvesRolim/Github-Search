@@ -13,7 +13,11 @@ function Form({ setReloadUsersList }) {
   const [user, setUser] = useState('');
   const [userData, setUserData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [isActive, setIsActive] = useState(false);
+  const [overlayIsActive, setOverlayIsActive] = useState(false);
+
+  const handleClick = () => {
+    setOverlayIsActive(false);
+  };
 
   const handleSubmit = async (event) => {
     try {
