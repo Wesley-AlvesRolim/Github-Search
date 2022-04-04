@@ -23,16 +23,18 @@ function Form() {
 
       const { data } = await axios.get(user);
 
-      const foundURL = dataInLocalStorage.some((url) => url === data.url);
+      const foundURL = dataInLocalStorage.some(
+        (userInLocalStorage) => userInLocalStorage.url === data.url,
+      );
       setUserData(data);
       setIsLoading(false);
-      setIsActive(true);
+      setOverlayIsActive(true);
 
       if (foundURL) return;
-      dataInLocalStorage.push(data.url);
+      dataInLocalStorage.push({ url: data.url, researchTime: Date.now() });
       myLocalStorage.setItem(dataInLocalStorage);
-    } catch (error) {
-      console.error(error);
+      setReloadUsersList(true);
+    } catch {
       setIsLoading(false);
     }
   };
