@@ -5,7 +5,9 @@ import axios from '../../services/axios';
 import { Input } from './Input/Index';
 import { Loading } from '../Loading/Index';
 import { UserProfile } from '../UserProfile/Index';
-import { Container, Button, Overlay } from './Index.style';
+import {
+  Container, Overlay, FaArrowCircleLeftStyled,
+} from './Index.style';
 
 import { LocalStorage } from '../../utils/localStorage';
 
@@ -47,16 +49,19 @@ function Form({ setReloadUsersList }) {
     <>
       <Loading isLoading={isLoading} />
       {userData.login && (
-        <Overlay isActive={isActive}>
-          <UserProfile
-            username={userData.login}
-            avatar={userData.avatar_url}
-            githubURL={userData.html_url}
-            location={userData.location}
-            publicRepositories={userData.public_repos}
-            followers={userData.followers}
-            following={userData.following}
-          />
+        <Overlay overlayIsActive={overlayIsActive}>
+          <div>
+            <FaArrowCircleLeftStyled size="2em" onClick={handleClick} />
+            <UserProfile
+              username={userData.login}
+              avatar={userData.avatar_url}
+              githubURL={userData.html_url}
+              location={userData.location}
+              publicRepositories={userData.public_repos}
+              followers={userData.followers}
+              following={userData.following}
+            />
+          </div>
         </Overlay>
       )}
       <Container>
