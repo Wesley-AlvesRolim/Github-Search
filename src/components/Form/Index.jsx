@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import propTypes from 'prop-types';
 import axios from '../../services/axios';
 
 import { Input } from './Input/Index';
@@ -8,7 +9,7 @@ import { Container, Button, Overlay } from './Index.style';
 
 import { LocalStorage } from '../../utils/localStorage';
 
-function Form() {
+function Form({ setReloadUsersList }) {
   const [user, setUser] = useState('');
   const [userData, setUserData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -64,5 +65,9 @@ function Form() {
     </>
   );
 }
+
+Form.propTypes = {
+  setReloadUsersList: propTypes.func.isRequired,
+};
 
 export { Form };
