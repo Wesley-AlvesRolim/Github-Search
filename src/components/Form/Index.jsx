@@ -3,10 +3,11 @@ import propTypes from 'prop-types';
 import axios from '../../services/axios';
 
 import { Input } from './Input/Index';
+import { ButtonComponent as Button } from '../Button/Index';
 import { Loading } from '../Loading/Index';
 import { UserProfile } from '../UserProfile/Index';
 import {
-  Container, Overlay, FaArrowCircleLeftStyled,
+  Container, Overlay, FaArrowCircleLeftStyled, Form as FormStyled,
 } from './Index.style';
 
 import { LocalStorage } from '../../utils/localStorage';
@@ -65,11 +66,11 @@ function Form({ setReloadUsersList }) {
         </Overlay>
       )}
       <Container>
-        <form onSubmit={handleSubmit}>
+        <FormStyled onSubmit={handleSubmit}>
           <label htmlFor="profile"><h1>Pesquise um perfil do Github:</h1></label>
           <Input user={user} setUser={setUser} />
           <Button type="submit">Buscar</Button>
-        </form>
+        </FormStyled>
       </Container>
     </>
   );

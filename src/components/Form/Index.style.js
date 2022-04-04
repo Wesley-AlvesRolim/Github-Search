@@ -70,55 +70,49 @@ const Form = styled.form`
   display: grid;
   justify-items: center;
 
-  label{
+  label {
     margin-bottom: 0.75rem;
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
 
-    h1{
+    h1 {
       text-align: center;
     }
   }
 
-  input{
+  input {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 3;
   }
 
-  button{
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  button {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
   }
-}
 
-@media (max-width: 720px){
-  height: 15rem;
-  width: 95vw;
-  padding: 5px;
-    form{
-      input{
-        grid-column-start: 1;
-        grid-column-end: 3;
-        grid-row-start: 2;
-        grid-row-end: 3;
-      }
-      button{
-        margin-top: 0.75rem;
-        grid-column-start: 1;
-        grid-column-end: 3;
-        grid-row-start: 3;
-        grid-row-end: 4;
-      }
+  @media (max-width: 720px) {
+    input {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 2;
+      grid-row-end: 3;
+    }
+    button {
+      margin-top: 0.75rem;
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 3;
+      grid-row-end: 4;
     }
   }
 `;
 
 export {
-  Overlay, Container, FaArrowCircleLeftStyled,
+  Overlay, Container, FaArrowCircleLeftStyled, Form,
 };
