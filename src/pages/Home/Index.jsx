@@ -4,18 +4,43 @@ import { Form } from '../../components/Form/Index';
 import { UserProfile } from '../../components/UserProfile/Index';
 import { Container, Title } from './Index.style';
 
+import { LocalStorage } from '../../utils/localStorage';
+
 function Home() {
   const [users, setUsers] = useState([]);
-  useEffect(() => {
-    (async function getData() {
-      const { data } = await axios.get('Wesley-AlvesRolim');
-      setUsers([data]);
-    }());
-  }, []);
+  const [isLoading, setIsLoading] = useState(false);
+  const [reloadUsersList, setReloadUsersList] = useState(false);
+
+  function getData() {
+    try {
+      setIsLoading(true);
+
+      const dataInLocalStorage = new LocalStorage('latest_research').getItem();
+      const usersCollection = dataInLocalStorage.map(async (user) => {
+        const newURL = user.url.split('https://api.github.com/users/]').join();
+        const { data } = await axios.get(newURL);
+        return data;
+      });
+
+      usersCollection.forEach(async (user) => {
+        const data = await user;
+        const usersHasData = users.some((userInState) => userInState.id === data.id);
+        if (usersHasData) return;
+
+        setUsers((previousState) => [...previousState, data]);
+      });
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 3000);
+    } catch {
+      setIsLoading(false);
+    }
+  }
+  useEffect(() => { getData(); }, [reloadUsersList]);
 
   return (
     <>
-      <Form />
+      <Form reloadUsersList={reloadUsersList} setReloadUsersList={setReloadUsersList} />
       <Container>
         <Title>Ultimas pesquisas</Title>
         <ul>
