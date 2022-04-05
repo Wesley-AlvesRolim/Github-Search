@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../services/axios';
 import { Form } from '../../components/Form/Index';
 import { UserProfile } from '../../components/UserProfile/Index';
+import { Loading } from '../../components/Loading/Index';
 import { Container, Title } from './Index.style';
 
 import { LocalStorage } from '../../utils/localStorage';
@@ -40,6 +41,8 @@ function Home() {
 
   return (
     <>
+      <Loading isLoading={isLoading} />
+
       <Form reloadUsersList={reloadUsersList} setReloadUsersList={setReloadUsersList} />
       <Container>
         <Title>Ultimas pesquisas</Title>
