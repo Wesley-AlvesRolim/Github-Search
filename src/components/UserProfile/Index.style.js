@@ -39,6 +39,7 @@ const ImageBox = styled.div`
   }
   @media (max-width: 720px) {
       margin: 0;
+      align-items: center;
   }
 `;
 
