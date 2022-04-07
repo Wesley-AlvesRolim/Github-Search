@@ -11,7 +11,7 @@ function Home() {
     <>
       <Loading isLoading={isLoading} />
 
-      <Form setReloadUsersList={setReloadUsersList} />
+      <Form reloadUsersList={reloadUsersList} setReloadUsersList={setReloadUsersList} />
 
       <SearchUsersHistory
         reloadUsersList={reloadUsersList}
