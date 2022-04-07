@@ -30,8 +30,12 @@ function SearchUsersHistory({
 
         usersCollection.forEach(async (user) => {
           const data = await user;
-          const usersHasData = users.some((userInState) => userInState.id === data.id);
-          if (usersHasData) return;
+          const usersHasDataIndex = users.findIndex((userInState) => userInState.id === data.id);
+          if (usersHasDataIndex !== -1) {
+            setUsers((previousState) => previousState.filter((
+              (_, index) => index !== usersHasDataIndex
+            )));
+          }
 
           setUsers((previousState) => [...previousState, data]);
         });
