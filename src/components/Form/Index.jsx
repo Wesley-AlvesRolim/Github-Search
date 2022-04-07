@@ -12,7 +12,7 @@ import {
 
 import { LocalStorage } from '../../utils/localStorage';
 
-function Form({ setReloadUsersList }) {
+function Form({ reloadUsersList, setReloadUsersList }) {
   const [user, setUser] = useState('');
   const [userData, setUserData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -31,17 +31,20 @@ function Form({ setReloadUsersList }) {
 
       const { data } = await axios.get(user);
 
-      const foundURL = dataInLocalStorage.some(
+      const foundURLIndex = dataInLocalStorage.findIndex(
         (userInLocalStorage) => userInLocalStorage.url === data.url,
       );
       setUserData(data);
       setIsLoading(false);
       setOverlayIsActive(true);
 
-      if (foundURL) return;
+      if (foundURLIndex !== -1) {
+        dataInLocalStorage.splice(foundURLIndex, 1);
+      }
+
       dataInLocalStorage.push({ url: data.url, researchTime: Date.now() });
       myLocalStorage.setItem(dataInLocalStorage);
-      setReloadUsersList(true);
+      setReloadUsersList(!reloadUsersList);
     } catch {
       setIsLoading(false);
     }
@@ -77,6 +80,7 @@ function Form({ setReloadUsersList }) {
 }
 
 Form.propTypes = {
+  reloadUsersList: propTypes.bool.isRequired,
   setReloadUsersList: propTypes.func.isRequired,
 };
 
