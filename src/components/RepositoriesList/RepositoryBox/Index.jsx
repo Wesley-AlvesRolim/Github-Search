@@ -95,7 +95,7 @@ function RepositoryBox({ repository }) {
         </ul>
       </Languages>
       <LinkToRepository href={repository.html_url} target="_blank" rel="noopener noreferrer">
-        <Button sizeButton>Visitar o repositório</Button>
+        <Button largeButton>Visitar o repositório</Button>
       </LinkToRepository>
     </Container>
   );
