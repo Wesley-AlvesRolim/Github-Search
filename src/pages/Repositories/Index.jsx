@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from '../../services/axios';
 
 import { Loading } from '../../components/Loading/Index';
+import { RepositoriesHeader } from '../../components/RepositoriesHeader/Index';
 import { RepositoriesList } from '../../components/RepositoriesList/Index';
 
 function Repositories() {
@@ -31,6 +32,10 @@ function Repositories() {
   return (
     <>
       <Loading isLoading={isLoading} />
+      <RepositoriesHeader
+        userRepositoriesData={userRepositoriesData}
+        setUserRepositoriesToShowToUser={setUserRepositoriesToShowToUser}
+      />
 
       <RepositoriesList userRepositoriesToShowToUser={userRepositoriesToShowToUser} />
     </>
