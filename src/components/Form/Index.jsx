@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import axios from '../../services/axios';
 
 import { Input } from './Input/Index';
@@ -48,6 +49,7 @@ function Form({ reloadUsersList, setReloadUsersList }) {
       myLocalStorage.setItem(dataInLocalStorage);
       setReloadUsersList(!reloadUsersList);
     } catch {
+      toast.error('Tivemos um problema para encontrar o usuário. Tente novamente mais tarde!');
       setIsLoading(false);
     }
   };

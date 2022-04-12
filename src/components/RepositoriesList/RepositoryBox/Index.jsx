@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import propTypes from 'prop-types';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import { ButtonComponent as Button } from '../../Button/Index';
 
@@ -36,7 +37,8 @@ function RepositoryBox({ repository }) {
         }
         setContributors(data);
         setLanguages(addColorsToLanguages);
-      } catch (err) {
+      } catch {
+        toast.error('Tivemos um problema para encontrar os dados. Tente novamente mais tarde!');
         navigate('/', { replace: true });
       }
     }
