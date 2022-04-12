@@ -3,15 +3,15 @@ import propTypes from 'prop-types';
 
 import { Button } from './Index.style';
 
-function ButtonComponent({ type = 'button', modifyWidth = false, children }) {
+function ButtonComponent({ type = 'button', largeButton = false, children }) {
   return (
-    <Button type={type} modifyWidth={modifyWidth}>{children}</Button>
+    <Button type={type} largeButton={largeButton}>{children}</Button>
   );
 }
 
 ButtonComponent.propTypes = {
   type: propTypes.string,
-  modifyWidth: propTypes.bool,
+  largeButton: propTypes.bool,
   children: propTypes.oneOfType([
     propTypes.element, propTypes.string,
   ]).isRequired,
@@ -19,7 +19,7 @@ ButtonComponent.propTypes = {
 
 ButtonComponent.defaultProps = {
   type: 'button',
-  modifyWidth: false,
+  largeButton: false,
 };
 
 export { ButtonComponent };
