@@ -1,23 +1,20 @@
 import propTypes from 'prop-types';
+import { RepositoryBox } from './RepositoryBox/Index';
+import { RepositoriesListContainer, RepositoryNotFound } from './Index.style';
 
 function RepositoriesList({ userRepositoriesToShowToUser }) {
   return (
     userRepositoriesToShowToUser.data.length > 0 ? (
-      userRepositoriesToShowToUser.data.map((repository) => (
-        <li key={repository.id}>
-          <a href={repository.html_url} target="_blank" rel="noopener noreferrer" title={repository.name}>
-            {repository.name}
-          </a>
-          <p>
-            {repository.description || 'Este repositório não tem descrição.'}
-          </p>
-
-          <a href={repository.html_url} target="_blank" rel="noopener noreferrer">
-            Visitar o repositório
-          </a>
-        </li>
-      ))
-    ) : <h2>Nenhum repositório encontrado.</h2>
+      <RepositoriesListContainer>
+        {
+            userRepositoriesToShowToUser.data.map((repository) => (
+              <li key={repository.id}>
+                <RepositoryBox repository={repository} />
+              </li>
+            ))
+          }
+      </RepositoriesListContainer>
+    ) : <RepositoryNotFound>Nenhum repositório encontrado.</RepositoryNotFound>
   );
 }
 
