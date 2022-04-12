@@ -36,7 +36,9 @@ function Form({ reloadUsersList, setReloadUsersList }) {
       );
       setUserData(data);
       setIsLoading(false);
-      setOverlayIsActive(true);
+      setTimeout(() => {
+        setOverlayIsActive(true);
+      }, 100);
 
       if (foundURLIndex !== -1) {
         dataInLocalStorage.splice(foundURLIndex, 1);
@@ -52,7 +54,7 @@ function Form({ reloadUsersList, setReloadUsersList }) {
   return (
     <>
       <Loading isLoading={isLoading} />
-      {userData.login && (
+      {(userData.login && !isLoading) && (
         <Overlay overlayIsActive={overlayIsActive}>
           <div>
             <FaArrowCircleLeftStyled size="2em" onClick={handleClick} />
