@@ -3,9 +3,11 @@ import propTypes from 'prop-types';
 
 import { Button } from './Index.style';
 
-function ButtonComponent({ type = 'button', largeButton = false, children }) {
+function ButtonComponent({
+  type = 'button', largeButton = false, children, ...props
+}) {
   return (
-    <Button type={type} largeButton={largeButton}>{children}</Button>
+    <Button {...props} type={type} largeButton={largeButton}>{children}</Button>
   );
 }
 
@@ -15,11 +17,13 @@ ButtonComponent.propTypes = {
   children: propTypes.oneOfType([
     propTypes.element, propTypes.string,
   ]).isRequired,
+  props: propTypes.node,
 };
 
 ButtonComponent.defaultProps = {
   type: 'button',
   largeButton: false,
+  props: '',
 };
 
 export { ButtonComponent };
