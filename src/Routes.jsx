@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { Home } from './pages/Home/Index';
 import { Repositories } from './pages/Repositories/Index';
+import { PageNotFound } from './pages/PageNotFound/Index';
 
 function MyRoutes() {
   return (
@@ -10,7 +11,7 @@ function MyRoutes() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/repositories" element={<Repositories />} />
-        <Route path="*" element={<h1>Nada aqui</h1>} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );
